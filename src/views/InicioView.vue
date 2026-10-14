@@ -1,13 +1,11 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { supabase } from '@/supabase'
-
-const router = useRouter()
+import BarraNavegacion from '@/components/BarraNavegacion.vue'
 
 const correoUsuario = ref('')
 const miembroDesde = ref('')
-const cerrandoSesion = ref(false)
+const cantidadProductos = ref(null)
 
 onMounted(async () => {
   const {
@@ -35,43 +33,41 @@ onMounted(async () => {
       year: 'numeric',
     })
   }
-})
 
-async function cerrarSesion() {
-  try {
-    cerrandoSesion.value = true
+  // Cantidad de productos propios (ver supabase/productos.sql)
+  const { count, error } = await supabase
+    .from('productos')
+    .select('id', { count: 'exact', head: true })
 
-    const { error } = await supabase.auth.signOut()
-
-    if (error) {
-      throw error
-    }
-
-    router.push('/login')
-  } catch (error) {
-    alert(error.message)
-  } finally {
-    cerrandoSesion.value = false
+  if (!error) {
+    cantidadProductos.value = count
   }
-}
+})
 </script>
 
 <template>
-  <main class="pagina pagina-inicio">
-    <section class="tarjeta tarjeta-inicio">
-      <div class="icono">✓</div>
-      <h1>¡Bienvenido!</h1>
-      <p class="descripcion">Iniciaste sesión correctamente.</p>
+  <div class="contenedor-app">
+    <BarraNavegacion />
 
-      <div class="datos-usuario">
-        <span>Usuario autenticado</span>
-        <strong>{{ correoUsuario }}</strong>
-        <small v-if="miembroDesde">Miembro desde el {{ miembroDesde }}</small>
-      </div>
+    <main class="pagina pagina-inicio">
+      <section class="tarjeta tarjeta-inicio">
+        <div class="icono">✓</div>
+        <h1>¡Bienvenido!</h1>
+        <p class="descripcion">Iniciaste sesión correctamente.</p>
 
-      <button type="button" :disabled="cerrandoSesion" @click="cerrarSesion">
-        {{ cerrandoSesion ? 'Cerrando...' : 'Cerrar sesión' }}
-      </button>
-    </section>
-  </main>
+        <div class="datos-usuario">
+          <span>Usuario autenticado</span>
+          <strong>{{ correoUsuario }}</strong>
+          <small v-if="miembroDesde">Miembro desde el {{ miembroDesde }}</small>
+        </div>
+
+        <div class="datos-usuario">
+          <span>Productos cargados</span>
+          <strong>{{ cantidadProductos ?? '—' }}</strong>
+        </div>
+
+        <RouterLink to="/productos" class="boton">Administrar productos</RouterLink>
+      </section>
+    </main>
+  </div>
 </template>

@@ -10,6 +10,14 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  // host: true publica el servidor en la red local para abrirlo desde el celular
+  // (misma Wi-Fi) con la dirección "Network" que muestra `npm run dev`.
+  server: {
+    host: true,
+  },
+  preview: {
+    host: true,
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

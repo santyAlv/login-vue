@@ -5,6 +5,7 @@ import LoginView from '@/views/LoginView.vue'
 import RegistroView from '@/views/RegistroView.vue'
 import RecuperarView from '@/views/RecuperarView.vue'
 import NuevaContrasenaView from '@/views/NuevaContrasenaView.vue'
+import ProductosView from '@/views/ProductosView.vue'
 
 // Rutas que solo tienen sentido sin sesión iniciada
 const rutasPublicas = ['/login', '/registro', '/recuperar']
@@ -41,6 +42,15 @@ const router = createRouter({
       path: '/inicio',
       name: 'inicio',
       component: InicioView,
+      meta: {
+        requiereAutenticacion: true,
+      },
+    },
+    {
+      // ABM de productos (alta, baja y modificación)
+      path: '/productos',
+      name: 'productos',
+      component: ProductosView,
       meta: {
         requiereAutenticacion: true,
       },

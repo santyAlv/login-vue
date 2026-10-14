@@ -208,3 +208,362 @@ a:hover {
 .datos-usuario strong {
   word-break: break-all;
 }
+
+/* ---------- Botón como enlace ---------- */
+
+.boton {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  text-align: center;
+  color: #fff;
+  background: var(--primario);
+  border-radius: 10px;
+}
+
+.boton:hover {
+  background: var(--primario-oscuro);
+  text-decoration: none;
+}
+
+button.secundario {
+  color: var(--texto);
+  background: transparent;
+  border: 1px solid var(--borde);
+}
+
+button.secundario:hover:not(:disabled) {
+  background: var(--borde);
+}
+
+/* ---------- Barra de navegación (páginas privadas) ---------- */
+
+.contenedor-app {
+  min-height: 100vh;
+}
+
+.contenedor-app .pagina {
+  min-height: calc(100vh - 64px);
+}
+
+.barra-navegacion {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 64px;
+  padding: 0.6rem 1rem;
+  background: var(--tarjeta);
+  box-shadow: var(--sombra);
+}
+
+.barra-navegacion nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.barra-navegacion nav a {
+  padding: 0.5rem 0.8rem;
+  color: var(--texto-suave);
+  border-radius: 8px;
+}
+
+.barra-navegacion nav a:hover {
+  text-decoration: none;
+  background: var(--fondo);
+}
+
+.barra-navegacion nav a.router-link-active {
+  color: var(--primario);
+  background: var(--fondo);
+}
+
+.barra-navegacion button {
+  width: auto;
+  margin: 0;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- ABM de productos ---------- */
+
+.pagina-productos {
+  display: grid;
+  grid-template-columns: minmax(300px, 400px) 1fr;
+  align-items: start;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.panel {
+  min-width: 0;
+  padding: 1.75rem;
+  background: var(--tarjeta);
+  border-radius: 16px;
+  box-shadow: var(--sombra);
+}
+
+.panel h1 {
+  font-size: 1.5rem;
+}
+
+.etiqueta {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primario);
+}
+
+.campo textarea {
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  color: var(--texto);
+  background: transparent;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  outline: none;
+  resize: vertical;
+}
+
+.campo textarea:focus {
+  border-color: var(--primario);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.campo input[type='file'] {
+  padding: 0.55rem;
+  font-size: 0.9rem;
+}
+
+.campo small {
+  color: var(--texto-suave);
+  font-size: 0.8rem;
+}
+
+.fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.fila .campo input {
+  width: 100%;
+}
+
+.contenedor-vista-previa {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+.vista-previa {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--borde);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.check input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--primario);
+}
+
+.acciones-formulario {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.cabecera-listado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cabecera-listado button {
+  width: auto;
+  margin: 0;
+  padding: 0.5rem 1rem;
+}
+
+.vacio {
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+.tabla-contenedor {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th {
+  padding: 0.6rem;
+  text-align: left;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  border-bottom: 1px solid var(--borde);
+}
+
+td {
+  padding: 0.75rem 0.6rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--borde);
+}
+
+.celda-producto {
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+}
+
+.celda-producto small {
+  color: var(--texto-suave);
+}
+
+.miniatura {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.sin-imagen {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
+.estado {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.estado.activo {
+  color: var(--exito-texto);
+  background: var(--exito-fondo);
+}
+
+.estado.inactivo {
+  color: var(--error-texto);
+  background: var(--error-fondo);
+}
+
+.acciones-tabla {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.acciones-tabla button {
+  width: auto;
+  margin: 0;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.acciones-tabla .eliminar {
+  background: #dc2626;
+}
+
+.acciones-tabla .eliminar:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+/* ---------- Celular ---------- */
+
+@media (max-width: 800px) {
+  .pagina-productos {
+    grid-template-columns: 1fr;
+    padding: 1rem 0.75rem;
+  }
+
+  .panel {
+    padding: 1.25rem;
+  }
+
+  .tarjeta {
+    padding: 1.75rem 1.25rem;
+  }
+
+  /* Evita el zoom automático de iOS al enfocar un campo */
+  .campo input,
+  .campo textarea {
+    font-size: 16px;
+  }
+
+  /* La tabla se muestra como tarjetas, una por producto */
+  table,
+  tbody,
+  tr,
+  td {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 0 0.75rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--borde);
+  }
+
+  td {
+    padding: 0.2rem 0;
+    border: none;
+  }
+
+  td:first-child {
+    grid-row: span 5;
+  }
+
+  .miniatura {
+    width: 72px;
+    height: 72px;
+  }
+
+  td[data-titulo]::before {
+    content: attr(data-titulo) ': ';
+    color: var(--texto-suave);
+    font-size: 0.85rem;
+  }
+
+  .acciones-tabla {
+    margin-top: 0.4rem;
+  }
+
+  .acciones-tabla button {
+    flex: 1;
+    padding: 0.65rem;
+  }
+}
